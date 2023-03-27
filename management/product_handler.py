@@ -15,3 +15,21 @@ def get_products_by_type(type: str):
         if product["type"] == type
     ]
     return product
+
+
+def add_product(lista: list, **args):
+    list_ids = [
+        product["_id"]
+        for product in lista
+    ]
+
+    new_id = 1
+
+    if list_ids:
+        new_id = max(list_ids) + 1
+
+    args["_id"] = new_id
+
+    lista.append(args)
+
+    return args
